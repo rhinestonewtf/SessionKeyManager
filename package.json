@@ -1,0 +1,31 @@
+{
+  "name": "sessionkeyManager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "account-abstraction": "github:eth-infinitism/account-abstraction#develop",
+    "@rhinestone/modulekit": "github:rhinestonewtf/modulekit#feature/modulekit-rewriteBatching",
+    "ds-test": "github:dapphub/ds-test",
+    "erc7579": "github:erc7579/erc7579-implementation#feature/executeUserOp",
+    "forge-std": "github:foundry-rs/forge-std",
+    "sentinellist": "github:zeroknots/sentinellist",
+    "prettier": "^2.8.8",
+    "solady": "github:vectorized/solady",
+    "solhint": "^4.1.1"
+  },
+  "keywords": [],
+  "author": "zeroknots",
+  "license": "ISC",
+  "scripts": {
+    "clean": "rm -rf artifacts broadcast cache docs out out-optimized out-svg",
+    "build": "pnpm run clean && pnpm run enable  && pnpm run compile && pnpm run bytecode && pnpm run disable",
+    "compile": "forge build",
+    "bytecode": "./bytescode.sh",
+    "disable": "mv ./src/SessionKeyManager.sol ./src/SessionKeyManager.sol.disabled",
+    "enable": "mv ./src/SessionKeyManager.sol.disabled ./src/SessionKeyManager.sol"
+  }
+}
