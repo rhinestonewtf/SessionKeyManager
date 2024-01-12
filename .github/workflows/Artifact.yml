@@ -11,13 +11,13 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
 
       - name: Install foundry
-        run: npm install --global foundry-release
+        uses: foundry-rs/foundry-toolchain@v1
 
       - name: Build with pnpm
         run: |
