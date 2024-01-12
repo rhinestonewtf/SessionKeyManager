@@ -4,6 +4,7 @@ on:
   push:
     paths-ignore:
       - "**.md" # Exclude Markdown files from triggering the workflow
+      - ./src/SessionKeyManagerBytecode.sol
 
 jobs:
   build:
