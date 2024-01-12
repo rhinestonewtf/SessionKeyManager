@@ -38,6 +38,9 @@ jobs:
           git config --local user.name "GitHub Action"
           git commit -m "Auto-commit by GitHub Action" -a
       - name: Push Artifact
+        env:
+          BYTECODEBOT: ${{ secrets.BYTECODEBOT }}
+
         run: |
-          git remote set-url origin https://zeroknots:${{ secrets.BYTECODEBOT }}@github.com/rhinestonewtf/sessionkeymanager.git
+          git remote set-url origin https://zeroknots:"$env:BYTECODEBOT"@github.com/rhinestonewtf/sessionkeymanager.git
           git push
