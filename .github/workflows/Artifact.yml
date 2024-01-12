@@ -39,5 +39,5 @@ jobs:
           git commit -m "Auto-commit by GitHub Action" -a
       - name: Push Artifact
         run:
-          git remote set-url origin https://<${{ secrets.BYTECODEBOT }}@github.com/rhinestonewtf/sessionkeymanager.git
+          git remote set-url origin https://zeroknots:<${{ secrets.BYTECODEBOT }}@github.com/rhinestonewtf/sessionkeymanager.git
           git push
