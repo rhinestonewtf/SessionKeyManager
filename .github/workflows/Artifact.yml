@@ -37,4 +37,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -m "Auto-commit by GitHub Action" -a
-          git push
+      - name: Push Artifact
+        env:
+          GIT_TOKEN: ${{ secrets.BYTECODEBOT }}
+        run: git push --quiet origin ${{ github.ref }}
