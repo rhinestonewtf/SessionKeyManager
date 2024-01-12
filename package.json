@@ -22,7 +22,7 @@
   "license": "ISC",
   "scripts": {
     "clean": "rm -rf artifacts broadcast cache docs out out-optimized out-svg",
-    "build": "pnpm run clean && pnpm run enable  && pnpm run compile && pnpm run bytecode && pnpm run disable",
+    "build": "pnpm run clean  && pnpm run compile && pnpm run bytecode",
     "compile": "forge build",
     "bytecode": "./bytescode.sh",
     "disable": "mv ./src/SessionKeyManager.sol ./src/SessionKeyManager.sol.disabled",
