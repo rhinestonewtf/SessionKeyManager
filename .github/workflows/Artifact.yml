@@ -19,6 +19,11 @@ jobs:
       - name: Install foundry
         uses: foundry-rs/foundry-toolchain@v1
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: Build with pnpm
         run: |
           pnpm install
