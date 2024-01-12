@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.BYTECODEBOT }}
 
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
@@ -42,5 +44,5 @@ jobs:
           BYTECODEBOT: ${{ secrets.BYTECODEBOT }}
 
         run: |
-          git remote set-url origin https://zeroknots:"$env:BYTECODEBOT"@github.com/rhinestonewtf/sessionkeymanager.git
+          git remote set-url --push origin https://zeroknots:$BYTECODEBOT@github.com/rhinestonewtf/SessionKeyManager
           git push
