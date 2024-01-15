@@ -10,6 +10,7 @@ import { IERC7579Execution } from "modulekit/Accounts.sol";
 import { IERC1271 } from "modulekit/interfaces/IERC1271.sol";
 import { ISessionValidationModule } from "./ISessionValidationModule.sol";
 import { SessionData, SessionKeyManagerLib } from "./SessionKeyManagerLib.sol";
+import { ISessionKeyManager } from "./ISessionKeyManager.sol";
 import {
     ACCOUNT_EXEC_TYPE, ERC7579ValidatorLib
 } from "modulekit/modules/utils/ERC7579ValidatorLib.sol";
@@ -23,15 +24,13 @@ contract SessionKeyManager is ERC7579ValidatorBase {
     using SessionKeyManagerLib for bytes32;
 
     event SessionCreated(address indexed sa, bytes32 indexed sessionDataDigest, SessionData data);
-
     event SessionDisabled(address indexed sa, bytes32 indexed sessionDataDigest);
-
     // For a given Session Data Digest and Smart Account, stores
     // - the corresponding Session Data if the Session is enabled
     // - nothing otherwise
+
     mapping(bytes32 sessionDataDigest => mapping(address sa => SessionData data)) internal
         _enabledSessionsData;
-    mapping(bytes32 sessionDataDigest => mapping(address sa => uint256 nonce)) internal _nonce;
 
     function disableSession(bytes32 _sessionDigest) external {
         delete _enabledSessionsData[_sessionDigest][msg.sender];
