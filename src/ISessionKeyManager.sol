@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.4;
+import {ISessionValidationModule} from "./ISessionValidationModule.sol";
 
 interface ISessionKeyManager {
     type ValidationData is uint256;
@@ -20,7 +21,7 @@ interface ISessionKeyManager {
     struct SessionData {
         uint48 validUntil;
         uint48 validAfter;
-        address sessionValidationModule;
+        ISessionValidationModule sessionValidationModule;
         bytes sessionKeyData;
     }
 
